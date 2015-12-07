@@ -398,6 +398,14 @@ namespace CMS.DocumentEngine.Types
 					return mInstance.GetFieldAttachment("CV");
 				}
 			}
+
+            public string FullNameAndEmail
+            {
+                get
+                {
+                    return FirstName + " " + LastName + ", " + Email;
+                }
+            }
 		}
 
 		#endregion

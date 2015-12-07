@@ -22,141 +22,175 @@ using CMS.DocumentEngine;
 
 namespace CMS.DocumentEngine.Types
 {
-	/// <summary>
-	/// Represents a content item of type FreeEmployees.
-	/// </summary>
-	public partial class FreeEmployees : TreeNode
-	{
-		#region "Constants and variables"
+    /// <summary>
+    /// Represents a content item of type FreeEmployees.
+    /// </summary>
+    public partial class FreeEmployees : TreeNode
+    {
+        #region "Constants and variables"
 
-		/// <summary>
-		/// The name of the data class.
-		/// </summary>
-		public const string CLASS_NAME = "HRMS.FreeEmployees";
-
-
-		/// <summary>
-		/// The instance of the class that provides extended API for working with FreeEmployees fields.
-		/// </summary>
-		private readonly FreeEmployeesFields mFields;
-
-		#endregion
+        /// <summary>
+        /// The name of the data class.
+        /// </summary>
+        public const string CLASS_NAME = "HRMS.FreeEmployees";
 
 
-		#region "Properties"
+        /// <summary>
+        /// The instance of the class that provides extended API for working with FreeEmployees fields.
+        /// </summary>
+        private readonly FreeEmployeesFields mFields;
 
-		/// <summary>
-		/// FreeEmployeesID.
-		/// </summary>
-		[DatabaseIDField]
-		public int FreeEmployeesID
-		{
-			get
-			{
-				return ValidationHelper.GetInteger(GetValue("FreeEmployeesID"), 0);
-			}
-			set
-			{
-				SetValue("FreeEmployeesID", value);
-			}
-		}
+        #endregion
 
 
-		/// <summary>
-		/// Section name.
-		/// </summary>
-		[DatabaseField]
-		public string SectionName
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("SectionName"), "");
-			}
-			set
-			{
-				SetValue("SectionName", value);
-			}
-		}
+        #region "Properties"
+
+        /// <summary>
+        /// FreeEmployeesID.
+        /// </summary>
+        [DatabaseIDField]
+        public int FreeEmployeesID
+        {
+            get
+            {
+                return ValidationHelper.GetInteger(GetValue("FreeEmployeesID"), 0);
+            }
+            set
+            {
+                SetValue("FreeEmployeesID", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Gets an object that provides extended API for working with FreeEmployees fields.
-		/// </summary>
-		public FreeEmployeesFields Fields
-		{
-			get
-			{
-				return mFields;
-			}
-		}
+        /// <summary>
+        /// Section name.
+        /// </summary>
+        [DatabaseField]
+        public string SectionName
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("SectionName"), "");
+            }
+            set
+            {
+                SetValue("SectionName", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Provides extended API for working with FreeEmployees fields.
-		/// </summary>
-		public partial class FreeEmployeesFields
-		{
-			/// <summary>
-			/// The content item of type FreeEmployees that is a target of the extended API.
-			/// </summary>
-			private readonly FreeEmployees mInstance;
+        /// <summary>
+        /// 
+        /// </summary>
+        [DatabaseField]
+        public string Description
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Description"), "");
+            }
+            set
+            {
+                SetValue("Description", value);
+            }
+        }
 
 
-			/// <summary>
-			/// Initializes a new instance of the <see cref="FreeEmployeesFields" /> class with the specified content item of type FreeEmployees.
-			/// </summary>
-			/// <param name="instance">The content item of type FreeEmployees that is a target of the extended API.</param>
-			public FreeEmployeesFields(FreeEmployees instance)
-			{
-				mInstance = instance;
-			}
+        /// <summary>
+        /// Gets an object that provides extended API for working with FreeEmployees fields.
+        /// </summary>
+        public FreeEmployeesFields Fields
+        {
+            get
+            {
+                return mFields;
+            }
+        }
 
 
-			/// <summary>
-			/// FreeEmployeesID.
-			/// </summary>
-			public int ID
-			{
-				get
-				{
-					return mInstance.FreeEmployeesID;
-				}
-				set
-				{
-					mInstance.FreeEmployeesID = value;
-				}
-			}
+        /// <summary>
+        /// Provides extended API for working with FreeEmployees fields.
+        /// </summary>
+        public partial class FreeEmployeesFields
+        {
+            /// <summary>
+            /// The content item of type FreeEmployees that is a target of the extended API.
+            /// </summary>
+            private readonly FreeEmployees mInstance;
 
 
-			/// <summary>
-			/// Section name.
-			/// </summary>
-			public string SectionName
-			{
-				get
-				{
-					return mInstance.SectionName;
-				}
-				set
-				{
-					mInstance.SectionName = value;
-				}
-			}
-		}
-
-		#endregion
+            /// <summary>
+            /// Initializes a new instance of the <see cref="FreeEmployeesFields" /> class with the specified content item of type FreeEmployees.
+            /// </summary>
+            /// <param name="instance">The content item of type FreeEmployees that is a target of the extended API.</param>
+            public FreeEmployeesFields(FreeEmployees instance)
+            {
+                mInstance = instance;
+            }
 
 
-		#region "Constructors"
+            /// <summary>
+            /// FreeEmployeesID.
+            /// </summary>
+            public int ID
+            {
+                get
+                {
+                    return mInstance.FreeEmployeesID;
+                }
+                set
+                {
+                    mInstance.FreeEmployeesID = value;
+                }
+            }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="FreeEmployees" /> class.
-		/// </summary>
-		public FreeEmployees() : base(CLASS_NAME)
-		{
-			mFields = new FreeEmployeesFields(this);
-		}
 
-		#endregion
-	}
+            /// <summary>
+            /// Section name.
+            /// </summary>
+            public string SectionName
+            {
+                get
+                {
+                    return mInstance.SectionName;
+                }
+                set
+                {
+                    mInstance.SectionName = value;
+                }
+            }
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string Description
+            {
+                get
+                {
+                    return mInstance.Description;
+                }
+                set
+                {
+                    mInstance.Description = value;
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region "Constructors"
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FreeEmployees" /> class.
+        /// </summary>
+        public FreeEmployees()
+            : base(CLASS_NAME)
+        {
+            mFields = new FreeEmployeesFields(this);
+        }
+
+        #endregion
+    }
 }
