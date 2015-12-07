@@ -1,0 +1,25 @@
+﻿@model IEnumerable<CMS.DocumentEngine.Types.Teams>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>Teams section name</th>
+        <th></th>
+    </tr>
+
+    @foreach (var team in Model)
+    {
+        <tr>
+            <td>
+                @team.Fields.SectionName
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = team.NodeID})
+            </td>
+        </tr>
+    }
+</table>

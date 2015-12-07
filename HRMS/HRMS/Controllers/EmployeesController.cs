@@ -15,7 +15,7 @@
         {
             //Getting all the sections with employees who are not assigned into teams
             var employeeSections = FreeEmployeesProvider.GetFreeEmployees();
-            var first = employeeSections.First();
+            //var first = employeeSections.First();
             
             //var viewModels = new List<EmployeeSectionsWithChilds>();
             //foreach (var section in employeeSections)
