@@ -56,7 +56,7 @@
                 @member.Fields.Position
             </td>
             <td>
-                @Html.ActionLink("Details", "EmployeeDetails", "Employees", null, new { id = member.NodeID })
+                @Html.ActionLink("Details", "EmployeeDetails", "Employees", new { id = member.NodeID, parentId = Model.Team.NodeID }, new { @class = "btn btn-default" })
             </td>
         </tr>
     }
