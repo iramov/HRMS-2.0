@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BABCD911-4F77-4B80-8102-0C80131ED7AD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRMS</RootNamespace>
+    <AssemblyName>HRMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMS.AmazonStorage">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.AmazonStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ApplicationDashboard">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ApplicationDashboard.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Automation">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.AzureStorage">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.AzureStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.BannerManagement">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.BannerManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Base">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Blogs">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Blogs.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Chat">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Chat.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.CKEditor">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CKEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.CMSSiteMapProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CMSSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Community">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Community.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ContinuousIntegration">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ContinuousIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Controls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Controls.XmlSerializers">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Controls.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Core">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.CustomTables">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.CustomTables.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DataCom">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataCom.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DataEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DataProviderSQL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DataProviderSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DocumentEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DocumentEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DocumentWebServices">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.DocumentWebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Ecommerce">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Ecommerce.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.EcommerceProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EcommerceProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.EmailEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EmailEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.EventLog">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EventLog.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.EventManager">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.EventManager.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ExtendedControls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ExtendedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.FileSystemStorage">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FileSystemStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.FormControls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FormControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.FormEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.FormEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Forums">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Forums.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Globalization">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Globalization.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.HealthMonitoring">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.HealthMonitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Helpers">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ImportExport">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ImportExport.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.IO">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.LicenseProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.LicenseProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.LicenseProvider.XmlSerializers">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.LicenseProvider.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Localization">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.MacroEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MacroEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.MediaLibrary">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MediaLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Membership">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Membership.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.MembershipProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MembershipProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.MessageBoards">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.MessageBoards.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Messaging">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Modules">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ModuleUsageTracking">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.ModuleUsageTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Mvc">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Newsletters">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Newsletters.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Notifications">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.OnlineForms">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OnlineForms.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.OnlineMarketing">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OnlineMarketing.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.OutputFilter">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.OutputFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Personas">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Personas.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Polls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Polls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.PortalControls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.PortalControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.PortalEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.PortalEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Protection">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Protection.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Relationships">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Relationships.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Reporting">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Routing.Web">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Routing.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SalesForce">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SalesForce.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Scheduler">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Search">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Search.Lucene3">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.Lucene3.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Search.TextExtractors">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Search.TextExtractors.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SearchProviderSQL">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SearchProviderSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SharePoint">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SharePoint.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SiteProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SiteProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SocialMarketing">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SocialMarketing.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SocialMedia">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SocialMedia.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.StrandsRecommender">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.StrandsRecommender.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Synchronization">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Synchronization.Web">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Synchronization.WSE3">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Synchronization.WSE3.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SynchronizationEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.SynchronizationEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Taxonomy">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Tests">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.Tests.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.TranslationServices">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.TranslationServices.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.UIControls">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.UIControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.URLRewritingEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.URLRewritingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.VirtualPathProvider">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.VirtualPathProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WebAnalytics">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebAnalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WebApi">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WebDAV">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebDAV.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WebFarmSync">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebFarmSync.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WebServices">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WIFIntegration">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WIFIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WinServiceEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WinServiceEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.WorkflowEngine">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\CMS.WorkflowEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\FiftyOne.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobalLink.ProjectDirector.WebServices">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\GlobalLink.ProjectDirector.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="ITHit.WebDAV.Server">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\ITHit.WebDAV.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="Kentico.Google.Apis">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Kentico.Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Kentico.Web.Mvc">
+      <HintPath>..\packages\Kentico.Web.Mvc.1.0.0\lib\net45\Kentico.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.v3">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Lucene.Net.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.WordNet.SynExpand">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Lucene.Net.WordNet.SynExpand.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxMindGEOIP">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\MaxMindGEOIP.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PDFClown">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\PDFClown.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Ude">
+      <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Ude.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\ApplicationConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Generated\Employee.generated.cs" />
+    <Compile Include="Models\Generated\EmployeeProvider.generated.cs" />
+    <Compile Include="Models\Generated\FreeEmployees.generated.cs" />
+    <Compile Include="Models\Generated\FreeEmployeesProvider.generated.cs" />
+    <Compile Include="Models\Generated\Project.generated.cs" />
+    <Compile Include="Models\Generated\ProjectProvider.generated.cs" />
+    <Compile Include="Models\Generated\Projects.generated.cs" />
+    <Compile Include="Models\Generated\ProjectsProvider.generated.cs" />
+    <Compile Include="Models\Generated\Team.generated.cs" />
+    <Compile Include="Models\Generated\TeamProvider.generated.cs" />
+    <Compile Include="Models\Generated\Teams.generated.cs" />
+    <Compile Include="Models\Generated\TeamsProvider.generated.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\mimetypes.txt" />
+    <Content Include="CMSDependencies\AjaxControlToolkit.4.1.60919.0\AjaxControlToolkit.dll" />
+    <Content Include="CMSDependencies\AjaxMin.4.96.4941.15381\AjaxMin.dll" />
+    <Content Include="CMSDependencies\AWSSDK.1.5.60.1\AWSSDK.dll" />
+    <Content Include="CMSDependencies\ClosedXML.0.68.1.0\ClosedXML.dll" />
+    <Content Include="CMSDependencies\DocumentFormat.OpenXml.2.0.5022.0\DocumentFormat.OpenXml.dll" />
+    <Content Include="CMSDependencies\DotNetOpenAuth.4.0.0.11165\DotNetOpenAuth.dll" />
+    <Content Include="CMSDependencies\Facebook.6.0.10.0\Facebook.dll" />
+    <Content Include="CMSDependencies\HtmlAgilityPack.1.4.0.0\HtmlAgilityPack.dll" />
+    <Content Include="CMSDependencies\ICSharpCode.SharpZipLib.0.85.3.365\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="CMSDependencies\Interop.IWshRuntimeLibrary.1.0.0.0\Interop.IWshRuntimeLibrary.dll" />
+    <Content Include="CMSDependencies\LinkedIn.1.0.0.0\LinkedIn.dll" />
+    <Content Include="CMSDependencies\LinqToTwitter.2.1.12.0\LinqToTwitter.dll" />
+    <Content Include="CMSDependencies\Microsoft.IdentityModel.3.5.0.0\Microsoft.IdentityModel.dll" />
+    <Content Include="CMSDependencies\Microsoft.SharePoint.Client.15.0.0.0\Microsoft.SharePoint.Client.dll" />
+    <Content Include="CMSDependencies\Microsoft.SharePoint.Client.Runtime.15.0.0.0\Microsoft.SharePoint.Client.Runtime.dll" />
+    <Content Include="CMSDependencies\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="CMSDependencies\Microsoft.Web.Services3.3.0.0.0\Microsoft.Web.Services3.dll" />
+    <Content Include="CMSDependencies\Mono.Cecil.0.9.6.0\Mono.Cecil.dll" />
+    <Content Include="CMSDependencies\NetSpell.SpellChecker.2.1.7.25114\NetSpell.SpellChecker.dll" />
+    <Content Include="CMSDependencies\Newtonsoft.Json.6.0.0.0\Newtonsoft.Json.dll" />
+    <Content Include="CMSDependencies\NSubstitute.1.8.1.0\NSubstitute.dll" />
+    <Content Include="CMSDependencies\NuGet.Core.2.8.50506.491\NuGet.Core.dll" />
+    <Content Include="CMSDependencies\nunit.framework.2.6.3.13283\nunit.framework.dll" />
+    <Content Include="CMSDependencies\OpenPop.2.0.4.369\OpenPop.dll" />
+    <Content Include="CMSDependencies\System.Net.Http.Formatting.5.2.2.0\System.Net.Http.Formatting.dll" />
+    <Content Include="CMSDependencies\System.Web.Http.5.2.2.0\System.Web.Http.dll" />
+    <Content Include="CMSDependencies\System.Web.Http.WebHost.5.2.2.0\System.Web.Http.WebHost.dll" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Employees\" />
+    <Folder Include="Views\Teams\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CMSResources\CMS.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65004</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64677/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
