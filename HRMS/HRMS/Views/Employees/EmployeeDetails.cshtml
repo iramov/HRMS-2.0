@@ -1,0 +1,87 @@
+﻿@model CMS.DocumentEngine.Types.Employee
+@{
+    ViewBag.Title = "EmployeeDetails";
+}
+
+<div>
+    <h4>Employee details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            First name:
+        </dt>
+
+        <dd>
+            @Model.Fields.FirstName
+        </dd>
+
+        <dt>
+            Last name:
+        </dt>
+
+        <dd>
+            @Model.Fields.LastName
+        </dd>
+
+        <dt>
+            Position:
+        </dt>
+
+        <dd>
+            @Model.Fields.Position
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Model.Fields.Email
+        </dd>
+
+        <dt>
+            Mobile phone:
+        </dt>
+
+        <dd>
+            @Model.Fields.MobilePhone
+        </dd>
+
+        <dt>
+            Address:
+        </dt>
+
+        <dd>
+            @Model.Fields.Address
+        </dd>
+
+        <dt>
+            Status:
+        </dt>
+
+        <dd>
+            @Model.Fields.Status
+        </dd>
+
+        <dt>
+            Picture:
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+        <dt>
+            CV:
+        </dt>
+
+        <dd>
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "SectionDetails", new { id = @Model.NodeParentID}, new { @class = "btn btn-default" })
+</p>

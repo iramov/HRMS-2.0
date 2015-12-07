@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CMS.DocumentEngine.Types.FreeEmployees>
+@{
+    ViewBag.Title = "All sections with free employees";
+}
+
+<h2>All sections with free employees</h2>
+
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>Section name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var sectionEmployees in Model)
+    {
+        <tr>
+            <td>
+                @sectionEmployees.Fields.SectionName
+            </td>
+            <td>
+                @sectionEmployees.Fields.Description
+            </td>
+            <td>
+                    <div class="btn-group" role="group">
+                        
+                        <a class="btn btn-default" href="@Url.Action("SectionDetails", "Employees", new { id = @sectionEmployees.NodeID })">
+                            Details
+                            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                        </a>
+                        
+                    </div>
+                </td>
+        </tr>
+    }
+
+</table>
+
