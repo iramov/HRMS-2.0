@@ -194,3 +194,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+HRMS/HRMS/Web.config
+HRMS/HRMS/Web.config
+HRMS/HRMS/packages.config
