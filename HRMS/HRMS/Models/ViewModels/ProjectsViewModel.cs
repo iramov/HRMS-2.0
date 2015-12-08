@@ -8,6 +8,8 @@ namespace HRMS.Models.ViewModels
 {
     public class ProjectViewModel
     {
-        public Team Team { get; set; }
+        public Project Project { get; set; }
+
+        public List<Teams> Teams { get; set; }
     }
 }
