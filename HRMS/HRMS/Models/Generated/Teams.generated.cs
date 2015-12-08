@@ -22,141 +22,175 @@ using CMS.DocumentEngine;
 
 namespace CMS.DocumentEngine.Types
 {
-	/// <summary>
-	/// Represents a content item of type Teams.
-	/// </summary>
-	public partial class Teams : TreeNode
-	{
-		#region "Constants and variables"
+    /// <summary>
+    /// Represents a content item of type Teams.
+    /// </summary>
+    public partial class Teams : TreeNode
+    {
+        #region "Constants and variables"
 
-		/// <summary>
-		/// The name of the data class.
-		/// </summary>
-		public const string CLASS_NAME = "HRMS.Teams";
-
-
-		/// <summary>
-		/// The instance of the class that provides extended API for working with Teams fields.
-		/// </summary>
-		private readonly TeamsFields mFields;
-
-		#endregion
+        /// <summary>
+        /// The name of the data class.
+        /// </summary>
+        public const string CLASS_NAME = "HRMS.Teams";
 
 
-		#region "Properties"
+        /// <summary>
+        /// The instance of the class that provides extended API for working with Teams fields.
+        /// </summary>
+        private readonly TeamsFields mFields;
 
-		/// <summary>
-		/// TeamsID.
-		/// </summary>
-		[DatabaseIDField]
-		public int TeamsID
-		{
-			get
-			{
-				return ValidationHelper.GetInteger(GetValue("TeamsID"), 0);
-			}
-			set
-			{
-				SetValue("TeamsID", value);
-			}
-		}
+        #endregion
 
 
-		/// <summary>
-		/// Section name.
-		/// </summary>
-		[DatabaseField]
-		public string SectionName
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("SectionName"), "");
-			}
-			set
-			{
-				SetValue("SectionName", value);
-			}
-		}
+        #region "Properties"
+
+        /// <summary>
+        /// TeamsID.
+        /// </summary>
+        [DatabaseIDField]
+        public int TeamsID
+        {
+            get
+            {
+                return ValidationHelper.GetInteger(GetValue("TeamsID"), 0);
+            }
+            set
+            {
+                SetValue("TeamsID", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Gets an object that provides extended API for working with Teams fields.
-		/// </summary>
-		public TeamsFields Fields
-		{
-			get
-			{
-				return mFields;
-			}
-		}
+        /// <summary>
+        /// Section name.
+        /// </summary>
+        [DatabaseField]
+        public string SectionName
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("SectionName"), "");
+            }
+            set
+            {
+                SetValue("SectionName", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Provides extended API for working with Teams fields.
-		/// </summary>
-		public partial class TeamsFields
-		{
-			/// <summary>
-			/// The content item of type Teams that is a target of the extended API.
-			/// </summary>
-			private readonly Teams mInstance;
+        /// <summary>
+        /// 
+        /// </summary>
+        [DatabaseField]
+        public string Description
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Description"), "");
+            }
+            set
+            {
+                SetValue("Description", value);
+            }
+        }
 
 
-			/// <summary>
-			/// Initializes a new instance of the <see cref="TeamsFields" /> class with the specified content item of type Teams.
-			/// </summary>
-			/// <param name="instance">The content item of type Teams that is a target of the extended API.</param>
-			public TeamsFields(Teams instance)
-			{
-				mInstance = instance;
-			}
+        /// <summary>
+        /// Gets an object that provides extended API for working with Teams fields.
+        /// </summary>
+        public TeamsFields Fields
+        {
+            get
+            {
+                return mFields;
+            }
+        }
 
 
-			/// <summary>
-			/// TeamsID.
-			/// </summary>
-			public int ID
-			{
-				get
-				{
-					return mInstance.TeamsID;
-				}
-				set
-				{
-					mInstance.TeamsID = value;
-				}
-			}
+        /// <summary>
+        /// Provides extended API for working with Teams fields.
+        /// </summary>
+        public partial class TeamsFields
+        {
+            /// <summary>
+            /// The content item of type Teams that is a target of the extended API.
+            /// </summary>
+            private readonly Teams mInstance;
 
 
-			/// <summary>
-			/// Section name.
-			/// </summary>
-			public string SectionName
-			{
-				get
-				{
-					return mInstance.SectionName;
-				}
-				set
-				{
-					mInstance.SectionName = value;
-				}
-			}
-		}
-
-		#endregion
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TeamsFields" /> class with the specified content item of type Teams.
+            /// </summary>
+            /// <param name="instance">The content item of type Teams that is a target of the extended API.</param>
+            public TeamsFields(Teams instance)
+            {
+                mInstance = instance;
+            }
 
 
-		#region "Constructors"
+            /// <summary>
+            /// TeamsID.
+            /// </summary>
+            public int ID
+            {
+                get
+                {
+                    return mInstance.TeamsID;
+                }
+                set
+                {
+                    mInstance.TeamsID = value;
+                }
+            }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Teams" /> class.
-		/// </summary>
-		public Teams() : base(CLASS_NAME)
-		{
-			mFields = new TeamsFields(this);
-		}
 
-		#endregion
-	}
+            /// <summary>
+            /// Section name.
+            /// </summary>
+            public string SectionName
+            {
+                get
+                {
+                    return mInstance.SectionName;
+                }
+                set
+                {
+                    mInstance.SectionName = value;
+                }
+            }
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string Description
+            {
+                get
+                {
+                    return mInstance.Description;
+                }
+                set
+                {
+                    mInstance.Description = value;
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region "Constructors"
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Teams" /> class.
+        /// </summary>
+        public Teams()
+            : base(CLASS_NAME)
+        {
+            mFields = new TeamsFields(this);
+        }
+
+        #endregion
+    }
 }

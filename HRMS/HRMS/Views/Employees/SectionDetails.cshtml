@@ -50,7 +50,7 @@
             <td>
                 <div class="btn-group" role="group">
 
-                    <a class="btn btn-default" href="@Url.Action("EmployeeDetails", "Employees", new { id = @employee.NodeID })">
+                    <a class="btn btn-default" href="@Url.Action("EmployeeDetails", "Employees", new { id = @employee.NodeID, employeeSectionId = @Model.Section.NodeID })">
                         Details
                         <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                     </a>
@@ -62,5 +62,5 @@
 </table> 
 
 <p>
-    @Html.ActionLink("Back to List", "Index", new { id = @Model.Section.NodeID }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to List", "AllSections", "Employees", null, new { @class = "btn btn-default" })
 </p>         
