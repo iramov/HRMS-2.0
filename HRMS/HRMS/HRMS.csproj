@@ -527,6 +527,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\default-profile-image.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -565,6 +566,7 @@
     <Content Include="Views\Teams\Details.cshtml" />
     <Content Include="Views\Teams\TeamDetails.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Employees\AllSections.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Employees\Index.cshtml" />
