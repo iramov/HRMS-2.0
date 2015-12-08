@@ -561,6 +561,7 @@
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Details.cshtml" />
     <Content Include="Views\Teams\TeamDetails.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Employees\Index.cshtml" />
