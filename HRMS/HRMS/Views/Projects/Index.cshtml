@@ -6,8 +6,12 @@
 <h2>All sections</h2>
 
 <table class="table table-striped table-hover table-bordered">
+
     <tr>
-        <th>Project name</th>
+     
+        <th>
+            @Html.ActionLink("Projects section", "Index", new { sortOrder = ViewBag.ProjectSectionSort })
+        </th>
         <th>Description</th>
 
     </tr>

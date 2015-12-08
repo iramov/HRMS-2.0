@@ -330,6 +330,9 @@
     <Reference Include="Kentico.Google.Apis">
       <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Kentico.Google.Apis.dll</HintPath>
     </Reference>
+    <Reference Include="Kentico.Search">
+      <HintPath>..\packages\Kentico.Search.1.0.0\lib\net45\Kentico.Search.dll</HintPath>
+    </Reference>
     <Reference Include="Kentico.Web.Mvc">
       <HintPath>..\packages\Kentico.Web.Mvc.1.0.0\lib\net45\Kentico.Web.Mvc.dll</HintPath>
     </Reference>
@@ -465,6 +468,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HttpErrorsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -556,7 +560,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\AllProjects.cshtml" />
-    <Content Include="Views\Projects\Contain.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Details.cshtml" />
@@ -568,7 +571,9 @@
     <Content Include="Views\Employees\SectionDetails.cshtml" />
     <Content Include="Views\Employees\EmployeeDetails.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Search\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

@@ -21,6 +21,13 @@ namespace HRMS
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // Redirect to NotFound controller
+            routes.MapRoute(
+                name: "NotFound",
+                url: "{*url}",
+                defaults: new { controller = "HttpErrors", action = "NotFound" }
+                );
         }
     }
 }
