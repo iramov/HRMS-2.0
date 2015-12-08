@@ -330,6 +330,9 @@
     <Reference Include="Kentico.Google.Apis">
       <HintPath>..\packages\Kentico.Libraries.9.0.0\lib\net45\Kentico.Google.Apis.dll</HintPath>
     </Reference>
+    <Reference Include="Kentico.Search">
+      <HintPath>..\packages\Kentico.Search.1.0.0\lib\net45\Kentico.Search.dll</HintPath>
+    </Reference>
     <Reference Include="Kentico.Web.Mvc">
       <HintPath>..\packages\Kentico.Web.Mvc.1.0.0\lib\net45\Kentico.Web.Mvc.dll</HintPath>
     </Reference>
@@ -468,6 +471,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HttpErrorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
@@ -583,20 +587,19 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\AllProjects.cshtml" />
-    <Content Include="Views\Projects\Contain.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Details.cshtml" />
     <Content Include="Views\Teams\TeamDetails.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Employees\" />
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\SectionDetails.cshtml" />
     <Content Include="Views\Employees\EmployeeDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Teams\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
