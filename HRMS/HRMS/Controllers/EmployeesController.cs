@@ -10,28 +10,23 @@
     using System.Web.Mvc;
     using Helpers;
 
-    public class EmployeesController : Controller
     public class EmployeesController : BaseController
     {
         // GET: Employees
-<<<<<<< HEAD
-        public ActionResult Index(string filterWord)
-        {
-            //Getting all employees in the site and printing them as a table
-            var allEmployees = EmployeeProvider.GetEmployees();
-
-            var viewModel = FilterEmployees(filterWord, allEmployees);
-
-            return View(viewModel);
-=======
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string filterWord, string sortOrder)
         {
             //Getting all employees in the site and printing them as a table
             var allEmployees = EmployeeProvider.GetEmployees();
             //SortHelper.SortByColumn(allEmployees, sortOrder);
             SortEmployees(allEmployees, ref sortOrder);
+            if (filterWord != String.Empty)
+            {
+                SortEmployees(allEmployees, ref sortOrder);
+                var viewModel = FilterEmployees(filterWord, allEmployees);
+                return View(viewModel);
+            }
+            ViewBag.FilterWord = filterWord;
             return View(allEmployees);
->>>>>>> refs/remotes/origin/master
         }
 
         /// <summary>
@@ -53,19 +48,22 @@
             }
             //ViewModel to store the data of the Parent Section and its children Employees
             var viewModel = new EmployeeSectionsWithChilds();
-            CMS.DocumentEngine.DocumentQuery<Employee> allChildren = new CMS.DocumentEngine.DocumentQuery<Employee>();
+            
             //Getting all the children on a section, saving them in a collection and printing them with they parent section name in a table
             var sectionChildren = sectionEmployees.Children;
             viewModel.Section = sectionEmployees;
-            if (sectionChildren != null)
+            if (sectionChildren.Any())
             {
+                var allChildren = new List<Employee>();
                 foreach (var child in sectionChildren)
                 {
                     var childToAdd = EmployeeProvider.GetEmployee(child.NodeID, "en-Us", "HRMS");
-                    allChildren.Union(childToAdd);
+                    allChildren.Add(childToAdd);
                 }
+                viewModel.Children.AddRange(allChildren);
             }
-            viewModel.Children.AddRange(SortEmployees(allChildren, ref sortOrder));
+            
+            
             return View(viewModel);
         }
 
@@ -116,7 +114,7 @@
         /// <param name="search">The word that you want to filter the employees by</param>
         /// <param name="employees">Collection of employees that will be filtered</param>
         /// <returns>The input collection filtered</returns>
-        private static IOrderedQueryable<Employee> FilterEmployees(string search, IOrderedQueryable<Employee> employees)
+        private IOrderedQueryable<Employee> FilterEmployees(string search, IOrderedQueryable<Employee> employees)
         {
             if (!String.IsNullOrEmpty(search))
             {

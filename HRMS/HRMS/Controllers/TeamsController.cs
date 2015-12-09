@@ -16,13 +16,21 @@ namespace HRMS.Controllers
         /// Print table containing all team pages in the site
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string filterWord)
         {
             List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(ref sortOrder);
             ViewBag.NameSortParam = viewBagFields[0];
             ViewBag.DeliverySortParam = viewBagFields[1];
             var teams = TeamProvider.GetTeams();
             SortHelper.SortByColumn(teams, sortOrder);
+
+            if (filterWord != String.Empty)
+            {
+                SortHelper.SortByColumn(teams, sortOrder);
+                var viewModel = FilterTeams(filterWord, teams);
+                return View(viewModel);
+            }
+
             return View(teams);
         }
 
@@ -90,6 +98,23 @@ namespace HRMS.Controllers
                 viewModel.Members = new List<Employee>();
             }
             return View(viewModel);
+        }
+
+        /// <summary>
+        /// Filtering the teams by entered search word
+        /// </summary>
+        /// <param name="search">The word that you want to filter the teams by</param>
+        /// <param name="team">Collection of teams that will be filtered</param>
+        /// <returns>The input collection filtered</returns>
+        private IOrderedQueryable<Team> FilterTeams(string search, IOrderedQueryable<Team> team)
+        {
+            if (!String.IsNullOrEmpty(search))
+            {
+                team = team.Where(e => e.Fields.Name.Contains(search)
+                    || e.Fields.Delivery.ToString().Contains(search))
+                    .OrderBy(e => e.Fields.ID);
+            }
+            return team;
         }
     }
 }
