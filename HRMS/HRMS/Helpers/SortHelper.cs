@@ -19,7 +19,7 @@ namespace HRMS.Helpers
         {
             get { return "NodeId"; }
         }
-        private static void ValidateSortOrder(ref string sortOrder)
+        public static void ValidateSortOrder(ref string sortOrder)
         {
             if (string.IsNullOrEmpty(sortOrder))
             {

@@ -75,6 +75,6 @@
     }
 </table>
 
-<td>
-    @Html.ActionLink("Back", "SectionDetails", "Teams", new { id = @Model.Team.NodeParentID }, new { @class = "btn btn-default" })
-</td>
+<div>
+    @Html.ActionLink("Back to section", "SectionDetails", "Teams", new { id = @Model.Team.NodeParentID }, new { @class = "btn btn-default" })
+</div>
