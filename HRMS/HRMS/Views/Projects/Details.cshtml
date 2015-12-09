@@ -34,7 +34,6 @@
     <tr>
         <th>Team name</th>
         <th>Description</th>
-        <th></th>
     </tr>
 
     @foreach (CMS.DocumentEngine.Types.Teams team in Model.Teams)
@@ -51,6 +50,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back to sections", "Index")
+    @Html.ActionLink("Back to projects", "AllProjects", new { id = Model.Project.NodeParentID }, new { @class = "btn btn-default" })
 </div>
-
