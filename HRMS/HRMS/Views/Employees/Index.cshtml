@@ -6,7 +6,13 @@
 <h2>All employees</h2>
 
 <div>
-    @Html.ActionLink("View free employee sections", "AllSections", "Employees", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("View free employee sections", "AllSections", "Employees", null, new { @class = "btn btn-default", @style = "float:left" })
+
+    @using (@Html.BeginForm())
+    {
+        @Html.TextBox("filterWord", null, new { @class = "form-control", @placeholder = "Search word", @style = "float:right" }) 
+        <input type="submit" value="Search" style="float:right" class="btn btn-default" />
+    }
 </div>
 <table class="table table-striped table-hover table-bordered">
     <tr>

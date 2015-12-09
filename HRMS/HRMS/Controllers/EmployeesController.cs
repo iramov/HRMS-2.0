@@ -12,11 +12,14 @@
     public class EmployeesController : Controller
     {
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string filterWord)
         {
             //Getting all employees in the site and printing them as a table
             var allEmployees = EmployeeProvider.GetEmployees();
-            return View(allEmployees);
+
+            var viewModel = FilterEmployees(filterWord, allEmployees);
+
+            return View(viewModel);
         }
 
         /// <summary>
@@ -94,6 +97,25 @@
             var employeeSections = FreeEmployeesProvider.GetFreeEmployees();
             //employeeSections = null;
             return View(employeeSections);
+        }
+
+        /// <summary>
+        /// Filtering the employees by entered search word
+        /// </summary>
+        /// <param name="search">The word that you want to filter the employees by</param>
+        /// <param name="employees">Collection of employees that will be filtered</param>
+        /// <returns>The input collection filtered</returns>
+        private static IOrderedQueryable<Employee> FilterEmployees(string search, IOrderedQueryable<Employee> employees)
+        {
+            if (!String.IsNullOrEmpty(search))
+            {
+                employees = employees.Where(e => e.Fields.FirstName.Contains(search)
+                    || e.Fields.Position.ToString().Contains(search)
+                    || e.Fields.LastName.Contains(search)
+                    || e.Fields.Email.Contains(search))
+                    .OrderBy(e => e.Fields.ID);
+            }
+            return employees;
         }
 
     }
