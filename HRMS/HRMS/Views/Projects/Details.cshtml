@@ -43,7 +43,7 @@
                 @team.Fields.SectionName
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Teams", new { id = team.NodeID, parentId = Model.Project.NodeID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Details", "SectionDetails", "Teams", new { id = team.NodeID, parentId = Model.Project.NodeID }, new { @class = "btn btn-default" })
             </td>
         </tr>
     }

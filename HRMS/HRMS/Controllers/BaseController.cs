@@ -19,5 +19,13 @@ namespace HRMS.Controllers
             SortHelper.SortByColumn(query, sortOrder);
             return query.ToList();
         }
+        public List<Team> SortTeams(CMS.DocumentEngine.DocumentQuery<Team> query, ref string sortOrder)
+        {
+            List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(ref sortOrder);
+            ViewBag.NameSortParam = viewBagFields[0];
+            ViewBag.DeliverySortParam = viewBagFields[1];
+            SortHelper.SortByColumn(query, sortOrder);
+            return query.ToList();
+        }
     }
 }

@@ -1,10 +1,28 @@
-﻿@model IEnumerable<CMS.DocumentEngine.Types.Team>
+﻿@model HRMS.Models.ViewModels.TeamsSectionViewModel
 @{
-    ViewBag.Title = "SectionDetails";
+    ViewBag.Title = "Section Details";
 }
 
-<h2>Details</h2>
+<h2>Team section with teams</h2>
 
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Team section name
+        </dt>
+        <dd>
+            @Model.Section.Fields.SectionName
+        </dd>
+        <dt>
+            Team section description
+        </dt>
+        <dd>
+            @Model.Section.Fields.Description
+        </dd>
+    </dl>
+</div>
+
+<h3> Section members </h3>
 <table class="table table-striped table-hover table-bordered">
     <tr>
         <th>Team name</th>
@@ -13,7 +31,7 @@
         <th></th>
     </tr>
 
-    @foreach (var team in Model)
+    @foreach (var team in Model.Children)
     {
         <tr>
             <td>
@@ -28,7 +46,7 @@
             <td>
                 <div class="btn-group" role="group">
 
-                    <a class="btn btn-default" href="@Url.Action("SectionDetails", "Teams", new { id = team.NodeID})">
+                    <a class="btn btn-default" href="@Url.Action("TeamDetails", "Teams", new { id = team.NodeID})">
                         Details
                         <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                     </a>
@@ -40,5 +58,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back to the section", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to List", "AllSections", "Teams", null, new { @class = "btn btn-default" })
 </div>

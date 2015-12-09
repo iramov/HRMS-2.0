@@ -18,15 +18,12 @@ namespace HRMS.Controllers
         /// <returns></returns>
         public ActionResult Index(string sortOrder, string filterWord)
         {
-            List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(ref sortOrder);
-            ViewBag.NameSortParam = viewBagFields[0];
-            ViewBag.DeliverySortParam = viewBagFields[1];
             var teams = TeamProvider.GetTeams();
-            SortHelper.SortByColumn(teams, sortOrder);
+            var teamsList = SortTeams(teams, ref sortOrder);
 
             if (filterWord != String.Empty)
             {
-                SortHelper.SortByColumn(teams, sortOrder);
+                //SortHelper.SortByColumn(teams, sortOrder);
                 var viewModel = FilterTeams(filterWord, teams);
                 return View(viewModel);
             }
@@ -46,8 +43,7 @@ namespace HRMS.Controllers
             return View(sections);
         }
 
-        //GET: Teams/Details/2
-        public ActionResult SectionDetails(int? id)
+        public ActionResult SectionDetails(int? id, string sortOrder)
         {
             if (id == null)
             {
@@ -58,14 +54,17 @@ namespace HRMS.Controllers
             {
                 return HttpNotFound();
             }
-            List<Team> teams = new List<Team>();
-            var children = section.Children;
-            foreach (var child in children)
+            TeamsSectionViewModel viewModel = new TeamsSectionViewModel
             {
-                Team obj = TeamProvider.GetTeam(child.NodeID, "en-us", "HRMS");
-                teams.Add(obj);
+                Section = section,
+                Children = new List<Team>()
+            };
+            if (section.Children.Any())
+            {
+                var teamsQuery = TeamProvider.GetTeams().Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, section.NodeID);
+                viewModel.Children = SortTeams(teamsQuery, ref sortOrder);
             }
-            return View(teams);
+            return View(viewModel);
         }
 
         //GET: Teams/TeamDetails/2
@@ -80,22 +79,15 @@ namespace HRMS.Controllers
             {
                 return HttpNotFound();
             }
-            TeamViewModel viewModel = new TeamViewModel();
-            viewModel.Team = team;
-            var children = team.Children;
-            if (children.Count != 0)
+            TeamViewModel viewModel = new TeamViewModel
             {
-                CMS.DocumentEngine.DocumentQuery<Employee> employeesQuery = new CMS.DocumentEngine.DocumentQuery<Employee>();
-                foreach (var child in children)
-                {
-                    var employee = EmployeeProvider.GetEmployee(child.NodeID, "en-us", "HRMS");
-                    employeesQuery.Union(employee);
-                }
+                Team = team,
+                Members = new List<Employee>()
+            };
+            if (team.Children.Any())
+            {
+                var employeesQuery = EmployeeProvider.GetEmployees().Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, team.NodeID);
                 viewModel.Members = SortEmployees(employeesQuery, ref sortOrder);
-            }
-            else
-            {
-                viewModel.Members = new List<Employee>();
             }
             return View(viewModel);
         }
