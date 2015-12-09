@@ -3,7 +3,7 @@
     ViewBag.Title = "TeamDetails";
 }
 
-<h2>Team Details</h2>
+<h2>Team details</h2>
 
 <div>
     <dl class="dl-horizontal">
@@ -37,9 +37,15 @@
 <h3>Team members</h3>
 <table class="table table-striped table-hover table-bordered">
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Employee position</th>
+        <th>
+            @Html.ActionLink("First name", "TeamDetails", new { sortOrder = ViewBag.FirstNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Last name", "TeamDetails", new { sortOrder = ViewBag.LastNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Employee position", "TeamDetails", new { sortOrder = ViewBag.PositionSortParam})
+        </th>
         <th></th>
     </tr>
 
@@ -56,12 +62,19 @@
                 @member.Fields.Position
             </td>
             <td>
-                @Html.ActionLink("Details", "EmployeeDetails", "Employees", new { id = member.NodeID, parentId = Model.Team.NodeID }, new { @class = "btn btn-default" })
+                <div class="btn-group" role="group">
+
+                    <a class="btn btn-default" href="@Url.Action("EmployeeDetails", "Employees", new { id = @member.NodeID, teamSectionId = @Model.Team.NodeID })">
+                        Details
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                    </a>
+
+                </div>
             </td>
         </tr>
     }
 </table>
 
 <td>
-    @Html.ActionLink("Back", "Details", "Teams", new { id = @Model.Team.NodeParentID }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back", "SectionDetails", "Teams", new { id = @Model.Team.NodeParentID }, new { @class = "btn btn-default" })
 </td>

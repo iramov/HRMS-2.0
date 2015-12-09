@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CMS.DocumentEngine.Types.Team>
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "SectionDetails";
 }
 
 <h2>Details</h2>
@@ -26,7 +26,14 @@
                 @team.Fields.AvailablePositions
             </td>
             <td>
-                @Html.ActionLink("Details", "TeamDetails", new { id = team.NodeID })
+                <div class="btn-group" role="group">
+
+                    <a class="btn btn-default" href="@Url.Action("SectionDetails", "Teams", new { id = team.NodeID})">
+                        Details
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                    </a>
+
+                </div>
             </td>
         </tr>
     }

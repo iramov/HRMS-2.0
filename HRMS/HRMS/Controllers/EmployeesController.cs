@@ -8,14 +8,17 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+    using Helpers;
 
-    public class EmployeesController : Controller
+    public class EmployeesController : BaseController
     {
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
             //Getting all employees in the site and printing them as a table
             var allEmployees = EmployeeProvider.GetEmployees();
+            //SortHelper.SortByColumn(allEmployees, sortOrder);
+            SortEmployees(allEmployees, ref sortOrder);
             return View(allEmployees);
         }
 
@@ -25,7 +28,7 @@
         /// <param name="id">The NodeId of a Section with employees</param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult SectionDetails(int? id)
+        public ActionResult SectionDetails(int? id, string sortOrder)
         {
             if (id == null)
             {
@@ -38,7 +41,7 @@
             }
             //ViewModel to store the data of the Parent Section and its children Employees
             var viewModel = new EmployeeSectionsWithChilds();
-            var allChildren = new List<Employee>();
+            CMS.DocumentEngine.DocumentQuery<Employee> allChildren = new CMS.DocumentEngine.DocumentQuery<Employee>();
             //Getting all the children on a section, saving them in a collection and printing them with they parent section name in a table
             var sectionChildren = sectionEmployees.Children;
             viewModel.Section = sectionEmployees;
@@ -47,11 +50,10 @@
                 foreach (var child in sectionChildren)
                 {
                     var childToAdd = EmployeeProvider.GetEmployee(child.NodeID, "en-Us", "HRMS");
-                    allChildren.Add(childToAdd);
+                    allChildren.Union(childToAdd);
                 }
             }
-
-            viewModel.Children.AddRange(allChildren);
+            viewModel.Children.AddRange(SortEmployees(allChildren, ref sortOrder));
             return View(viewModel);
         }
 
@@ -61,7 +63,7 @@
         /// <param name="id">The NodeId for the searched employee</param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult EmployeeDetails(int? id,int? parentId, int? employeeSectionId)
+        public ActionResult EmployeeDetails(int? id,int? teamSectionId, int? employeeSectionId)
         {
             if (id == null)
             {
@@ -72,9 +74,9 @@
             {
                 return HttpNotFound();
             }
-            if (parentId != null)
+            if (teamSectionId != null)
             {
-                ViewBag.ParentId = parentId;
+                ViewBag.ParentId = teamSectionId;
             }
             if (employeeSectionId != null)
             {

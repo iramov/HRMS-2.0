@@ -1,13 +1,22 @@
-﻿@model IEnumerable<CMS.DocumentEngine.Types.Teams>
+﻿@model IEnumerable<CMS.DocumentEngine.Types.Team>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AllTeams";
 }
 
-<h2>Projects sections</h2>
+<h2>All teams</h2>
 
+<div>
+    @Html.ActionLink("View all teams section", "AllSections", "Teams", null, new { @class = "btn btn-default" })
+</div>
 <table class="table table-striped table-hover table-bordered">
     <tr>
-        <th>Teams section name</th>
+        <th>
+            @Html.ActionLink("Team name", "Index", new { sortOrder = ViewBag.NameSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Team delivery", "Index", new { sortOrder = ViewBag.DeliverySortParam})
+        </th>
+        <th>Available positions</th>
         <th></th>
     </tr>
 
@@ -15,15 +24,28 @@
     {
         <tr>
             <td>
-                @team.Fields.SectionName
+                @team.Fields.Name
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = team.NodeID })
+                @team.Fields.Delivery
+            </td>
+            <td>
+                @team.Fields.AvailablePositions
+            </td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-default" href="@Url.Action("TeamDetails", "Teams", new { id = team.NodeID})">
+                        Details
+                        <span class="glyphicon glyphicon-zoom-in" aria-hidden="true">
+                        </span>
+                    </a>
+                </div>
             </td>
         </tr>
     }
 </table>
 
 <div>
-    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-default" })
 </div>
+
