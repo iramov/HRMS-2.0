@@ -19,12 +19,11 @@ namespace HRMS.Controllers
         public ActionResult Index(string sortOrder, string filterWord)
         {
             var teams = TeamProvider.GetTeams();
-            return View(SortTeams(teams, ref sortOrder));
-            SortHelper.SortByColumn(teams, sortOrder);
+            var teamsList = SortTeams(teams, ref sortOrder);
 
             if (filterWord != String.Empty)
             {
-                SortHelper.SortByColumn(teams, sortOrder);
+                //SortHelper.SortByColumn(teams, sortOrder);
                 var viewModel = FilterTeams(filterWord, teams);
                 return View(viewModel);
             }

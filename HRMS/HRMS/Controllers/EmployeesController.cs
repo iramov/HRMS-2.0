@@ -6,9 +6,7 @@
     using System.Net;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using Helpers;
 
     public class EmployeesController : BaseController
     {
@@ -47,23 +45,18 @@
                 return HttpNotFound();
             }
             //ViewModel to store the data of the Parent Section and its children Employees
-            var viewModel = new EmployeeSectionsWithChilds();
+            var viewModel = new EmployeeSectionsWithChilds
+            {
+                Section = sectionEmployees,
+                Children = new List<Employee>()
+            };
             
             //Getting all the children on a section, saving them in a collection and printing them with they parent section name in a table
-            var sectionChildren = sectionEmployees.Children;
-            viewModel.Section = sectionEmployees;
-            if (sectionChildren.Any())
-            {
-                var allChildren = new List<Employee>();
-                foreach (var child in sectionChildren)
-                {
-                    var childToAdd = EmployeeProvider.GetEmployee(child.NodeID, "en-Us", "HRMS");
-                    allChildren.Add(childToAdd);
-                }
-                viewModel.Children.AddRange(allChildren);
+            if (sectionEmployees.Children.Any())
+            { 
+                var employeesQuery = EmployeeProvider.GetEmployees().Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, sectionEmployees.NodeID);
+                viewModel.Children.AddRange(SortEmployees(employeesQuery, ref sortOrder));
             }
-            
-            
             return View(viewModel);
         }
 
@@ -104,7 +97,6 @@
         {
             //Getting all the sections with employees who are not assigned into teams
             var employeeSections = FreeEmployeesProvider.GetFreeEmployees();
-            //employeeSections = null;
             return View(employeeSections);
         }
 
@@ -126,6 +118,5 @@
             }
             return employees;
         }
-
     }
 }
