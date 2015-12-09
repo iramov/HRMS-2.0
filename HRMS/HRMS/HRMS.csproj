@@ -466,6 +466,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HttpErrorsController.cs" />
@@ -474,6 +475,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SortHelper.cs" />
     <Compile Include="Models\Generated\Employee.generated.cs" />
     <Compile Include="Models\Generated\EmployeeProvider.generated.cs" />
     <Compile Include="Models\Generated\FreeEmployees.generated.cs" />
@@ -562,11 +564,12 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\AllProjects.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
-    <Content Include="Views\Teams\Index.cshtml" />
-    <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Teams\AllSections.cshtml" />
+    <Content Include="Views\Teams\SectionDetails.cshtml" />
     <Content Include="Views\Teams\TeamDetails.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Employees\AllSections.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Employees\Index.cshtml" />
@@ -574,6 +577,7 @@
     <Content Include="Views\Employees\EmployeeDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

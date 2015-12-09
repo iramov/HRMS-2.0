@@ -10,10 +10,18 @@
 </div>
 <table class="table table-striped table-hover table-bordered">
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Employee position</th>
-        <th>Email</th>
+        <th>
+            @Html.ActionLink("First name", "Index", new { sortOrder = ViewBag.FirstNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Last name", "Index", new { sortOrder = ViewBag.LastNameSortParam})
+        </th>
+        <th>
+            @Html.ActionLink("Employee position", "Index", new { sortOrder = ViewBag.PositionSortParam})
+        </th>
+        <th>
+            Email
+        </th>
         <th></th>
     </tr>
 

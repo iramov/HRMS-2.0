@@ -1,4 +1,5 @@
 ﻿using CMS.DocumentEngine.Types;
+using HRMS.Helpers;
 using HRMS.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,36 @@ using System.Web.Mvc;
 
 namespace HRMS.Controllers
 {
-    public class TeamsController : Controller
+    public class TeamsController : BaseController
     {
-        // GET: Teams
-        public ActionResult Index()
+        /// <summary>
+        /// Print table containing all team pages in the site
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index(string sortOrder)
+        {
+            List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(ref sortOrder);
+            ViewBag.NameSortParam = viewBagFields[0];
+            ViewBag.DeliverySortParam = viewBagFields[1];
+            var teams = TeamProvider.GetTeams();
+            SortHelper.SortByColumn(teams, sortOrder);
+            return View(teams);
+        }
+
+        /// <summary>
+        /// Returns table containing all team sections
+        /// in the site
+        /// </summary>
+        /// <returns></returns>
+        
+        public ActionResult AllSections()
         {
             var sections = TeamsProvider.GetTeams();
             return View(sections);
         }
 
         //GET: Teams/Details/2
-        public ActionResult Details(int? id)
+        public ActionResult SectionDetails(int? id)
         {
             if (id == null)
             {
@@ -41,7 +61,7 @@ namespace HRMS.Controllers
         }
 
         //GET: Teams/TeamDetails/2
-        public ActionResult TeamDetails(int? id)
+        public ActionResult TeamDetails(int? id, string sortOrder)
         {
             if (id == null)
             {
@@ -52,17 +72,23 @@ namespace HRMS.Controllers
             {
                 return HttpNotFound();
             }
-            List<Employee> employees = new List<Employee>();
-            var children = team.Children;
-            foreach (var child in children)
-            {
-                Employee obj = EmployeeProvider.GetEmployee(child.NodeID, "en-us", "HRMS");
-                employees.Add(obj);
-            }
-
             TeamViewModel viewModel = new TeamViewModel();
             viewModel.Team = team;
-            viewModel.Members = employees;
+            var children = team.Children;
+            if (children.Count != 0)
+            {
+                CMS.DocumentEngine.DocumentQuery<Employee> employeesQuery = new CMS.DocumentEngine.DocumentQuery<Employee>();
+                foreach (var child in children)
+                {
+                    var employee = EmployeeProvider.GetEmployee(child.NodeID, "en-us", "HRMS");
+                    employeesQuery.Union(employee);
+                }
+                viewModel.Members = SortEmployees(employeesQuery, ref sortOrder);
+            }
+            else
+            {
+                viewModel.Members = new List<Employee>();
+            }
             return View(viewModel);
         }
     }
