@@ -10,19 +10,27 @@ namespace HRMS.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public List<Employee> SortEmployees(CMS.DocumentEngine.DocumentQuery<Employee> query, ref string sortOrder)
+        public List<Employee> SortEmployees(CMS.DocumentEngine.DocumentQuery<Employee> query, string sortOrder)
         {
-            List<string> viewBagFields = SortHelper.GetEmployeesSortViewBagFields(ref sortOrder);
+            List<string> viewBagFields = SortHelper.GetEmployeesSortViewBagFields(sortOrder);
             ViewBag.FirstNameSortParam = viewBagFields[0];
             ViewBag.LastNameSortParam = viewBagFields[1];
             ViewBag.PositionSortParam = viewBagFields[2];
             SortHelper.SortByColumn(query, sortOrder);
             return query.ToList();
         }
-        public List<Team> SortTeams(CMS.DocumentEngine.DocumentQuery<Team> query, ref string sortOrder)
+        public List<Team> SortTeams(CMS.DocumentEngine.DocumentQuery<Team> query, string sortOrder)
         {
-            List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(ref sortOrder);
+            List<string> viewBagFields = SortHelper.GetTeamsSortViewBagFields(sortOrder);
             ViewBag.NameSortParam = viewBagFields[0];
+            ViewBag.DeliverySortParam = viewBagFields[1];
+            SortHelper.SortByColumn(query, sortOrder);
+            return query.ToList();
+        }
+        public List<Project> SortProjects(CMS.DocumentEngine.DocumentQuery<Project> query, string sortOrder)
+        {
+            List<string> viewBagFields = SortHelper.GetProjectsSortViewBagFields(sortOrder);
+            ViewBag.ProjectNameSortParam = viewBagFields[0];
             ViewBag.DeliverySortParam = viewBagFields[1];
             SortHelper.SortByColumn(query, sortOrder);
             return query.ToList();

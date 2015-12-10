@@ -488,6 +488,7 @@
     <Compile Include="Models\Generated\TeamProvider.generated.cs" />
     <Compile Include="Models\Generated\Teams.generated.cs" />
     <Compile Include="Models\Generated\TeamsProvider.generated.cs" />
+    <Compile Include="Models\ViewModels\ProjectsSectionViewModel.cs" />
     <Compile Include="Models\ViewModels\ProjectsViewModel.cs" />
     <Compile Include="Models\ViewModels\TeamsSectionViewModel.cs" />
     <Compile Include="Models\ViewModels\TeamViewModel.cs" />

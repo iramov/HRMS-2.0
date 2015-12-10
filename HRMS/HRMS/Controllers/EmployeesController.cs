@@ -16,10 +16,10 @@
             //Getting all employees in the site and printing them as a table
             var allEmployees = EmployeeProvider.GetEmployees();
             //SortHelper.SortByColumn(allEmployees, sortOrder);
-            SortEmployees(allEmployees, ref sortOrder);
+            SortEmployees(allEmployees, sortOrder);
             if (filterWord != String.Empty)
             {
-                SortEmployees(allEmployees, ref sortOrder);
+                SortEmployees(allEmployees, sortOrder);
                 var viewModel = FilterEmployees(filterWord, allEmployees);
                 return View(viewModel);
             }
@@ -39,7 +39,8 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var sectionEmployees = FreeEmployeesProvider.GetFreeEmployees(id.Value, "en-Us", "HRMS").FirstOrDefault();
+            var sectionEmployees = FreeEmployeesProvider.GetFreeEmployees(id.Value, "en-Us", "HRMS")
+                .FirstOrDefault();
             if (sectionEmployees == null)
             {
                 return HttpNotFound();
@@ -54,8 +55,9 @@
             //Getting all the children on a section, saving them in a collection and printing them with they parent section name in a table
             if (sectionEmployees.Children.Any())
             { 
-                var employeesQuery = EmployeeProvider.GetEmployees().Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, sectionEmployees.NodeID);
-                viewModel.Children.AddRange(SortEmployees(employeesQuery, ref sortOrder));
+                var employeesQuery = EmployeeProvider.GetEmployees()
+                    .Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, sectionEmployees.NodeID);
+                viewModel.Children.AddRange(SortEmployees(employeesQuery, sortOrder));
             }
             return View(viewModel);
         }
@@ -72,7 +74,8 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var employee = EmployeeProvider.GetEmployee(id.Value, "en-Us", "HRMS").FirstOrDefault();
+            var employee = EmployeeProvider.GetEmployee(id.Value, "en-Us", "HRMS")
+                .FirstOrDefault();
             if (employee == null)
             {
                 return HttpNotFound();

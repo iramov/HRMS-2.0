@@ -11,7 +11,7 @@
     using CMS.Search;
     using CMS.DataEngine;
 
-    public class ProjectsController : Controller
+    public class ProjectsController : BaseController
     {
         public ActionResult Index(string sortOrder)
         {
@@ -38,33 +38,18 @@
             {
                 return HttpNotFound();
             }
-
-            // Declare list of projects
-            List<Project> projects = new List<Project>();
-
-            var children = section.Children;
-            // Getting all projects inside sections
-            foreach (var child in children)
+            ProjectsSectionViewModel viewModel = new ProjectsSectionViewModel
             {
-                Project obj = ProjectProvider.GetProject(child.NodeID, "en-us", "HRMS");
-                projects.Add(obj);
-            }
-
-            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name" : "";
-            ViewBag.DeliverySort = String.IsNullOrEmpty(sortOrder) ? "delivery" : "";
-
-            switch (sortOrder)
+                Section = section,
+                Children = new List<Project>()
+            };
+            if (section.Children.Any())
             {
-                case "name":
-                    var orderByName = projects.OrderBy(p => p.Fields.Name);
-                    return View(orderByName);
-                case "delivery":
-                    var orderByDelivery = projects.OrderBy(p => p.Fields.Delivery);
-                    return View(orderByDelivery);
-                default:
-                    var orderDefault = projects.OrderBy(p => p.Fields.ID);
-                    return View(orderDefault);
+                var projectsQuery = ProjectProvider.GetProjects()
+                    .Where("NodeParentID", CMS.DataEngine.QueryOperator.Equals, section.NodeID);
+                viewModel.Children = SortProjects(projectsQuery, sortOrder);
             }
+            return View(viewModel);
         }
 
         //GET: Details of current project
@@ -107,7 +92,7 @@
             switch (sortOrder)
             {
                 case "name":
-                    projects = ProjectsProvider.GetProjects().OrderBy("ProjectsName");
+                    projects = ProjectsProvider.GetProjects().OrderBy("SectionName");
                     break;
                 default:
                     projects = ProjectsProvider.GetProjects().OrderBy("ProjectsID");
